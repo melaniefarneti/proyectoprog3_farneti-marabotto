@@ -1,0 +1,3 @@
+D:/proyectoprog3_farneti-marabotto/cmake-build-debug/CMakeFiles/proyectoprog3_farneti_marabotto.dir
+D:/proyectoprog3_farneti-marabotto/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/proyectoprog3_farneti-marabotto/cmake-build-debug/CMakeFiles/rebuild_cache.dir

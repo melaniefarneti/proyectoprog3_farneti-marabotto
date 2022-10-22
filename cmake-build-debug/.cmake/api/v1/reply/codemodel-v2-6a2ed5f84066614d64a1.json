@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "proyectoprog3_farneti_marabotto::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-proyectoprog3_farneti_marabotto-Debug-e08330c4ebb6631508ce.json",
+					"jsonFile" : "target-proyectoprog3_farneti_marabotto-Debug-1e390c260baafa99e94b.json",
 					"name" : "proyectoprog3_farneti_marabotto",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/proyectoprog3_farneti-marabotto/cmake-build-debug",
-		"source" : "D:/proyectoprog3_farneti-marabotto"
+		"build" : "C:/Users/Equipo/proyectoprog3_farneti-marabotto/cmake-build-debug",
+		"source" : "C:/Users/Equipo/proyectoprog3_farneti-marabotto"
 	},
 	"version" : 
 	{

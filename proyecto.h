@@ -60,10 +60,8 @@ bool Palabra::bucarPalabra(){
 }
 
 void Palabra::insertarPalabra( Palabra p ){
-
     p.establecerTotal();
     V.push_back( p );
-
 }
 
 void Palabra::imprimir(){

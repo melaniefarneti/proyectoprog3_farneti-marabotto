@@ -18,10 +18,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30ffe295-622f-447a-8801-ea046898cd97" name="Changes" comment="git commit -m &quot;agregado de contador tiempo&quot;">
-      <change afterPath="$PROJECT_DIR$/NodoArbol.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lista.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nodo.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArbolBinario.h" beforeDir="false" afterPath="$PROJECT_DIR$/ArbolBinario.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodoArbol.h" beforeDir="false" afterPath="$PROJECT_DIR$/NodoArbol.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proyectoprog3_farneti_marabotto.dir/proyecto.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proyectoprog3_farneti_marabotto.dir/proyecto.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/proyectoprog3_farneti_marabotto.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/proyectoprog3_farneti_marabotto.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto.cpp" afterDir="false" />
@@ -60,12 +64,13 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Equipo/proyectoprog3_farneti-marabotto/cmake-build-debug",
+    "last_opened_file_path": "C:/Users/Equipo/2021a2-u02-listas-tizx",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Equipo\proyectoprog3_farneti-marabotto" />
       <recent name="C:\Users\Equipo\proyectoprog3_farneti-marabotto\cmake-build-debug" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -73,12 +78,12 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.proyectoprog3_farneti_marabotto">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" activateToolWindowBeforeRun="false" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" activateToolWindowBeforeRun="false" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -116,7 +121,8 @@
       <updated>1666229807106</updated>
       <workItem from="1666229810732" duration="924000" />
       <workItem from="1666230774495" duration="1000" />
-      <workItem from="1666266325420" duration="15002000" />
+      <workItem from="1666266325420" duration="17332000" />
+      <workItem from="1666871430077" duration="26069000" />
     </task>
     <task id="LOCAL-00001" summary="git commit -m &quot;agregado de contador tiempo&quot;">
       <created>1666266730566</created>
@@ -145,5 +151,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git commit -m &quot;agregado de contador tiempo&quot;" />
     <option name="LAST_COMMIT_MESSAGE" value="git commit -m &quot;agregado de contador tiempo&quot;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ArbolBinario.h</url>
+          <line>377</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

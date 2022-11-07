@@ -2,29 +2,21 @@
 #define U05_ARBOL_ARBOL_ARBOLBINARIO_H_
 #include <iostream>
 #include "NodoArbol.h"
+#include "Lista.h"
+
 using namespace std;
 
 template <class T> class ArbolBinario {
-private:
-    NodoArbol<T> *root;
-    T search(T data, NodoArbol<T> *r);
-    NodoArbol<T> * put(T data, NodoArbol<T> *r);
-    NodoArbol<T> * remove(T data, NodoArbol<T> *r);
-    NodoArbol<T> * findMaxAndRemove(NodoArbol<T> *r, bool *found);
-    void preorder(NodoArbol<T> *r);
-    void inorder(NodoArbol<T> *r);
-    void postorder(NodoArbol<T> *r);
-
 public:
     ArbolBinario(){
-        root == nullptr;
+        root = nullptr;
     };
 
-    void put(T dato);
+    void put(T data);
 
-    T search(T dato);
+    T search(T data);
 
-    void remove(T dato);
+    void remove(T data);
 
     void preorder();
 
@@ -59,6 +51,23 @@ public:
         // intercambiar el subárbol izquierdo con el subárbol derecho
         swap(root->getLeft(), root->getRight());
     };
+
+    void quickSort();
+    void mostrarRep();
+
+private:
+    NodoArbol<T> *root;
+    T search(T data, NodoArbol<T> *r);
+    NodoArbol<T> * put(T data, NodoArbol<T> *r);
+    NodoArbol<T> * remove(T data, NodoArbol<T> *r);
+    NodoArbol<T> * findMaxAndRemove(NodoArbol<T> *r, bool *found);
+    void preorder(NodoArbol<T> *r);
+    void inorder(NodoArbol<T> *r);
+    void postorder(NodoArbol<T> *r);
+    int calcularcont(NodoArbol<T> *r);
+    void mostrarRep(NodoArbol<T> *r);
+
+    NodoArbol<T> *findMin(NodoArbol<T> *r);
 };
 
 /**
@@ -79,25 +88,37 @@ template <class T> ArbolBinario<T>::~ArbolBinario() {}
  * @param clave Valor a buscar
  * @return el valor buscado
  */
-template <class T> T ArbolBinario<T>::search(T dato) {
-    return search(dato, root);
+template <class T> T ArbolBinario<T>::search(T data) {
+    return search(data, root);
 }
 
-template <class T> T ArbolBinario<T>::search(T dato, NodoArbol<T> *r) {
+template <class T> T ArbolBinario<T>::search(T data, NodoArbol<T> *r) {
     if(r == nullptr){
         throw 404;
     }
 
-    if(r->getData() == dato){
+    if(r->getData() == data){
         return r->getData();
     }
 
-    if(r->getData() > dato){
-        return search(dato, r->getLeft());
+    if(r->getData() > data){
+        return search(data, r->getLeft());
     }
     else{
-        return search(dato, r->getRight());
+        return search(data, r->getRight());
     }
+}
+
+template <class T>
+int ArbolBinario<T>::calcularcont(NodoArbol<T> *r)
+{
+    int cont;
+    if (r == nullptr)
+    {
+        return 0;
+    }
+    else
+        return r->contar();
 }
 
 /**
@@ -105,24 +126,26 @@ template <class T> T ArbolBinario<T>::search(T dato, NodoArbol<T> *r) {
  * @param clave Clave para agregar el dato
  * @param dato Dato a agregar
  */
-template <class T> void ArbolBinario<T>::put(T dato) {
-    root = put(dato, root);
+template <class T> void ArbolBinario<T>::put(T data) {
+    root = put(data, root);
 }
 
-template <class T> NodoArbol<T> * ArbolBinario<T>::put(T dato, NodoArbol<T> *r) {
+template <class T> NodoArbol<T> * ArbolBinario<T>::put(T data, NodoArbol<T> *r) {
     if(r == nullptr){
-        return new NodoArbol<T>(dato);
+        return new NodoArbol<T>(data);
     }
+    //ingresar lista excepcion
 
-    if(r->getData() == dato){
+    if(r->getData() == data){
+        calcularcont(r);
         throw 200;
     }
 
-    if(r->getData() >dato){
-        r->setLeft(put(dato, r->getLeft()));
+    if(r->getData() >data){
+        r->setLeft(put(data, r->getLeft()));
     }
     else{
-        r->setRight(put(dato, r->getRight()));
+        r->setRight(put(data, r->getRight()));
     }
 
     return r;
@@ -159,58 +182,111 @@ template <class T> NodoArbol<T> * ArbolBinario<T>::put(T dato, NodoArbol<T> *r) 
  * Elimina un dato del árbol
  * @param clave Clave para identificar el nodo a borrar
  */
-template <class T> void ArbolBinario<T>::remove(T dato) {
-    root = remove(dato, root);
+template <class T> void ArbolBinario<T>::remove(T data) {
+    root = remove(data, root);
 }
 
-template <class T> NodoArbol<T> *  ArbolBinario<T>::remove(T data, NodoArbol<T> *r){
-    NodoArbol<T> *aux;
+template <class T>
+NodoArbol<T> *ArbolBinario<T>::remove(T data, NodoArbol<T> *r)
+{
+    if (r == nullptr)
+        return r;
 
-    if (r == nullptr){
-        throw 404;
-    }
-
-    if (r->getData() == data){
-
-        if (r->getLeft() == nullptr && r->getRight() == nullptr){ //si es el ultimo
-            delete r;
-            return nullptr;
-        }
-        else if (r->getLeft() != nullptr && r->getRight() == nullptr){ //si hay algo a la izquierda
-            aux = r->getLeft();
-            delete r;
-            return aux;
-        }
-        else if (r->getLeft() == nullptr && r->getRight() != nullptr){ //si hay algo a la derecha
-            aux = r->getRight();
-            delete r;
-            return aux;
-        }
-        else if (r->getLeft() != nullptr && r->getRight() != nullptr){
-
-            if (r->getLeft()->getRight() != nullptr){
-                // Aca tenemos que buscar el valor maximo
-                bool found;
-                aux = findMaxAndRemove(r->getLeft(), &found);
-                aux->setRight(r->getRight());
-                aux->setLeft(r->getLeft());
-            }
-            else{
-                aux = r->getLeft();
-                aux->setRight(r->getRight());
-            }
-            delete r;
-            return aux;
-        }
-    }
-    else if (r->getData() > data){
+    // Si el valor data es menor al valor almacenado
+    // en r, entonces debe estar en el subarbol
+    // izquierdo
+    if (data < r->getData())
         r->setLeft(remove(data, r->getLeft()));
-    }
-    else{
+
+        // Si el valor data es mayor al valor almacenado
+        // en r, entonces debe estar en el subarbol
+        // derecho
+    else if (data > r->getData())
         r->setRight(remove(data, r->getRight()));
+
+        // Si data es el mismo valor que esta almacenado
+        // en r, entonces es el nodo que hay que eliminar
+    else
+    {
+        // Si r no tiene sub nodos, o si tiene uno solo
+        if ((r->getLeft() == nullptr) || (r->getRight() == nullptr))
+        {
+            NodoArbol<T> *temp = r->getLeft() ? r->getLeft() : r->getRight();
+
+            // En caso de que no tenga
+            if (temp == nullptr)
+            {
+                temp = r;
+                r = nullptr;
+            }
+            else          // Caso con un solo sub nodo
+                *r = *temp; // Se copian los valores del
+            // sub nodo no vacio
+            delete temp;
+        }
+        else
+        {
+
+            // Nodo r con dos sub nodos: Se debe obtener el
+            // sucesor inorder (el mas chico en el subarbol derecho)
+            NodoArbol<T> *temp = findMin(r->getRight());
+
+            // Copiar la data del sucesor inorder en r
+            r->setData(temp->getData());
+
+            // Eliminar el sucesor inorder
+            r->setRight(remove(temp->getData(), r->getRight()));
+        }
+    }
+
+    // Si el arbol tuviera un solo nodo, return
+    if (r == nullptr)
+        return r;
+
+    // 2. Actualizar la altura del nodo r
+    r->setHeight(1 + max(calculateHeight(r->getLeft()),
+                         calculateHeight(r->getRight())));
+
+    // 3. Obtener el factor de balance del nodo r
+    // para determinar si r se desbalanceo o no
+    // luego de la eliminacion
+    int balance = getBalance(r);
+
+    //Quedo desbalanceado II: corresponde una rot Der
+    if (balance > 1 && getBalance(r->getLeft()) >= 0)
+        return rotacionDerecha(r);
+
+    //Quedo desbalanceado ID: corresponde una rot Der Izq
+    if (balance > 1 && getBalance(r->getLeft()) < 0)
+    {
+        r->setLeft(rotacionIzquierda(r->getLeft()));
+        return rotacionDerecha(r);
+    }
+
+    //Quedo desbalanceado DD: corresponde una rot Izq
+    if (balance < -1 && getBalance(r->getRight()) <= 0)
+        return rotacionIzquierda(r);
+
+    //Quedo desbalanceado DI: corresponde una rot Izq Der
+    if (balance < -1 && getBalance(r->getRight()) > 0)
+    {
+        r->setRight(rotacionDerecha(r->getRight()));
+        return rotacionIzquierda(r);
     }
 
     return r;
+}
+
+template <class T>
+NodoArbol<T> *ArbolBinario<T>::findMin(NodoArbol<T> *r)
+{
+    {
+        NodoArbol<T> *ret = r;
+        while (ret->getLeft() != nullptr)
+            ret = ret->getLeft();
+
+        return ret;
+    }
 }
 
 template <class T> NodoArbol<T> * ArbolBinario<T>::findMaxAndRemove(NodoArbol<T> *r, bool *found){
@@ -307,6 +383,55 @@ template <class T> int ArbolBinario<T>::contarPorNivel(NodoArbol<T> *aux, int n)
     }
     return 0;
 
+}
+
+
+template <class T> void ArbolBinario<T>::mostrarRep() {
+    mostrarRep(root);
+}
+
+template <class T> void ArbolBinario<T>::mostrarRep(NodoArbol<T> *r) {
+        if (r == nullptr){
+            return;
+        }
+
+        mostrarRep(r->getLeft());
+        cout << r->getData() << " :" << r->getCont();
+        mostrarRep(r->getRight());
+    }
+
+
+void quickSort(int *cont, int inicio, int fin)
+{
+    int i, j, medio;
+    int pivot, aux;
+
+    medio = (inicio + fin) / 2;
+    pivot = cont[medio];
+    i = inicio;
+    j = fin;
+
+    do
+    {
+        while (cont[i] < pivot)
+            i++;
+        while (cont[j] > pivot)
+            j--;
+
+        if (i <= j)
+        {
+            aux = cont[i];
+            cont[i] = cont[j];
+            cont[j] = aux;
+            i++;
+            j--;
+        }
+    } while (i <= j);
+
+    if (j > inicio)
+        quickSort(cont, inicio, j);
+    if (i < fin)
+        quickSort(cont, i, fin);
 }
 
 #endif // U05_ARBOL_ARBOL_ARBOLBINARIO_H_
